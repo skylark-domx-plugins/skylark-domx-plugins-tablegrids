@@ -1,0 +1,53 @@
+{
+  "name": "skylark-domx-plugins-tablegrids",
+  "description": "The skylark tablegrid plugin library.",
+  "version": "0.9.0",
+  "keywords": [
+    "skylark",
+    "domx",
+    "plugin",
+    "tablegrid"
+  ],
+  "homepage": "https://github.com/skylark-domx-plugins/skylark-domx-plugins-tablegrids/",
+  "author": "Hudaokeji, Inc.",
+  "scripts": {
+    "build": "slib build ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skylark-domx-plugins/skylark-domx-plugins-tablegrids.git"
+  },
+  "bugs": {
+    "url": "https://github.com/skylark-domx-plugins/skylark-domx-plugins-tablegrids/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "skylark-domx-plugins-base": "git+https://github.com/skylark-domx-plugins/skylark-domx-plugins-base.git",
+    "skylark-domx": "git+https://github.com/skylark-domx/skylark-domx.git",
+    "skylark-langx": "git+https://github.com/skylark-langx/skylark-langx.git"
+  },
+  "skylarkjs": {
+    "directories": {
+      "dependencies": "./node_modules"
+    },
+    "secondaries": {},
+    "build": {
+      "prepare": {
+        "texttojs": [
+          "html",
+          "json",
+          "css"
+        ],
+        "jsxtojs": false,
+        "es6toamd": false,
+        "cjstoamd": false
+      },
+      "bundles": {
+        "all": true
+      }
+    }
+  },
+  "engines": {
+    "node": ">=0.10.1"
+  }
+}

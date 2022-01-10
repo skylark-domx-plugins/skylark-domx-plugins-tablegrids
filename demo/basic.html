@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>appendGrid</title>
+    <link href="../skins/default/appendGrid.css" rel="stylesheet" />
+    <script type="text/javascript" src="../dist/uncompressed/skylark-domx-plugins-tablegrids-all.js"></script>
+  </head>
+  <body>
+  <script id="jsSource" type="text/javascript">
+    var $ = skylarkjs.domx.query;
+
+$(function () {
+    // Initialize appendGrid
+    $('#tblAppendGrid').appendGrid({
+        caption: 'My CD Collections',
+        initRows: 1,
+        columns: [
+            { name: 'Album', display: 'Album', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '160px'} },
+            { name: 'Artist', display: 'Artist', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100px'} },
+            { name: 'Year', display: 'Year', type: 'text', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '40px'} },
+            { name: 'Origin', display: 'Origin', type: 'select', ctrlOptions: { 0: '{Choose}', 1: 'Hong Kong', 2: 'Taiwan', 3: 'Japan', 4: 'Korea', 5: 'US', 6: 'Others'} },
+            { name: 'Poster', display: 'With Poster?', type: 'checkbox' },
+            { name: 'Price', display: 'Price', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '50px', 'text-align': 'right' }, value: 0 },
+            { name: 'RecordId', type: 'hidden', value: 0 }
+        ]
+    });
+    // Handle `Load` button click
+    $('#btnLoad').click(function () {
+        $('#tblAppendGrid').appendGrid('load', [
+            { 'Album': 'Dearest', 'Artist': 'Theresa Fu', 'Year': '2009', 'Origin': 1, 'Poster': true, 'Price': 168.9, 'RecordId': 123 },
+            { 'Album': 'To be Free', 'Artist': 'Arashi', 'Year': '2010', 'Origin': 3, 'Poster': true, 'Price': 152.6, 'RecordId': 125 },
+            { 'Album': 'Count On Me', 'Artist': 'Show Luo', 'Year': '2012', 'Origin': 2, 'Poster': false, 'Price': 306.8, 'RecordId': 127 },
+            { 'Album': 'Wonder Party', 'Artist': 'Wonder Girls', 'Year': '2012', 'Origin': 4, 'Poster': true, 'Price': 108.6, 'RecordId': 129 },
+            { 'Album': 'Reflection', 'Artist': 'Kelly Chen', 'Year': '2013', 'Origin': 1, 'Poster': false, 'Price': 138.2, 'RecordId': 131 }
+        ]);
+    });
+    // Handle `Serialize` button click
+    $('#btnSerialize').click(function () {
+        alert('Here is the serialized data!!\n' + $(document.forms[0]).serialize());
+    });
+});
+  </script>
+  <form action="" method="post">
+<table id="tblAppendGrid">
+</table>
+<br />
+<button id="btnLoad" type="button">
+    Demo: Load Data</button>
+<button id="btnSerialize" type="button">
+    Demo: jQuery Serialize</button>
+  </form>
+  </body>
+</html>

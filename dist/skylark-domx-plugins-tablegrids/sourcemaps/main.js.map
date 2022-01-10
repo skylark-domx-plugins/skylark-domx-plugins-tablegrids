@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.js"],"names":["define","$"],"mappings":";;;;;;;AAAAA,QACI,qBACA,gBACF,SAASC,GACV,OAAOA","file":"../main.js","sourcesContent":["define([\r\n    \"skylark-domx-query\",\r\n    \"./table-grid\"\r\n],function($) {\r\n\treturn $;\r\n});"]}
