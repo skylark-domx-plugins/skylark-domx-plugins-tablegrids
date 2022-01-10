@@ -5,6 +5,33 @@
     <title>appendGrid</title>
     <link href="../skins/default/appendGrid.css" rel="stylesheet" />
     <script type="text/javascript" src="../dist/uncompressed/skylark-domx-plugins-tablegrids-all.js"></script>
+    <style>
+    table th ,td {
+    border:1px solid;
+    }
+     
+/*　スクロールバーの実装 */
+.table_sticky {
+    display: block;
+    overflow-y: scroll;
+    height: calc(100vh/2);
+    border:1px solid;
+    border-collapse: collapse;
+}
+.table_sticky thead  {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: gold;
+    border-top:#FFFFFF;
+}
+.table_sticky tfoot  {
+    position: sticky;
+    bottom: 0;
+    background: blue;
+    border-top:#FFFFFF;
+}
+  </style>
   </head>
   <body>
   <script id="jsSource" type="text/javascript">
@@ -33,7 +60,7 @@ $(function () {
     });
   </script>
   <form action="" method="post">
-<table id="tblAppendGrid">
+<table id="tblAppendGrid" class="table_sticky">
 </table>
   </form>
   </body>

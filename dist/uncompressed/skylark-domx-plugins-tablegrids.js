@@ -321,6 +321,7 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
                 $(tbWrap).attr('id', settings._wrapperId).addClass('appendGrid').insertAfter(tbWhole);
                 $(tbWhole).empty().addClass('ui-widget').appendTo(tbWrap);
                 // Check if content scrolling is enabled
+                /*
                 if (settings.maxBodyHeight > 0) {
                     // Seperate the thead and tfoot from source table
                     $('<table></table>').addClass('ui-widget head').append(tbHead).prependTo(tbWrap);
@@ -330,6 +331,13 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
                     // Add thead, tbody and tfoot to the same table
                     $(tbWhole).addClass('head body foot').append(tbColGp, tbHead, tbBody, tbFoot);
                 }
+                */
+                // Add thead, tbody and tfoot to the same table
+                $(tbWhole).addClass('head body foot').append(tbColGp, tbHead, tbBody, tbFoot);
+                if (settings.maxBodyHeight > 0) {
+                    $(tbBody).css('max-height', settings.maxBodyHeight);
+                }
+
                 // Handle header row
                 var tbHeadCellRowNum, tbHeadCellRowButton;
                 tbHead.appendChild(tbRow = document.createElement('tr'));
@@ -555,6 +563,7 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
                     showEmptyMessage(tbWrap, settings, true);
                 }
                 // Calculate column width
+                /*
                 if (settings.maxBodyHeight > 0) {
                     if (settings.autoColumnWidth) {
                         calculateColumnWidth(tbWrap);
@@ -562,6 +571,7 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
                         $('table.foot', tbWrap).width($(tbWhole).width());
                     }
                 }
+                */
             }
             return target;
         },
@@ -965,9 +975,11 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
         var tbBody = tbWhole.getElementsByTagName('tbody')[0];
         var tbRow, tbSubRow = null, tbCell, reachMaxRow = false, calColWidth = false;
         var oldHeight = 0, oldScroll = 0;
+        /*
         if (settings.maxBodyHeight > 0) {
             tbHead = $('#' + settings._wrapperId + ' table thead')[0];
         }
+        */
         // Check number of row to be inserted
         var numOfRow = numOfRowOrRowArray, loadData = false;
         if (langx.isArray(numOfRowOrRowArray)) {
@@ -1338,6 +1350,7 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
             }
         }
         // Check if re-calculate column width is required
+        /*
         if (0 < settings.maxBodyHeight && settings._calculateWidth && !calColWidth) {
             var scroll = $('#' + settings._wrapperId + '>div.scroller')[0];
             if (scroll.scrollHeight > scroll.offsetHeight) {
@@ -1345,12 +1358,15 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
                 settings._calculateWidth = false;
             }
         }
+        */
         // Save setting
         saveSetting(tbWhole, settings);
+        /*
         // Calculate column width
         if (calColWidth && settings.autoColumnWidth && settings.maxBodyHeight > 0) {
             calculateColumnWidth(document.getElementById(settings._wrapperId));
         }
+        */
         // Trigger events
         if (langx.isNumeric(rowIndex)) {
             if (langx.isFunction(settings.afterRowInserted)) {
@@ -1462,6 +1478,7 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
     function showEmptyMessage(tbWrap, settings, skipWidthCalculation) {
         var $emptyCell = $('<td></td>').text(settings._i18n.rowEmpty).attr('colspan', settings._finalColSpan);
         $('table.body tbody', tbWrap).append($('<tr></tr>').addClass('empty').append($emptyCell));
+        /*
         if (!skipWidthCalculation && settings.maxBodyHeight > 0) {
             // Check scrolling enabled
             if (settings.autoColumnWidth) {
@@ -1471,6 +1488,7 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
                 $emptyCell.width($('table.head', tbWrap).width() - 4);
             }
         }
+        */
     }
     function emptyGrid(tbWhole) {
         // Load settings
@@ -1715,6 +1733,7 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
         }
         return true;
     }
+    /*
     function calculateColumnWidth(tbWrap) {
         var $tbWhole = $('table.body', tbWrap);
         var $scroller = $('div.scroller', tbWrap);
@@ -1753,6 +1772,7 @@ define('skylark-domx-plugins-tablegrids/table-grid',[
         // Check the scroll panel width
         $scroller.width($tbWhole.width() + $scroller[0].offsetWidth - $scroller[0].clientWidth + 1);
     }
+    */
     /// <summary>
     /// Initialize append grid or calling its methods.
     /// </summary>
